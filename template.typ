@@ -7,10 +7,10 @@
 #let rule-c = rgb("#d1d5db")       // light gray for decorative lines
 
 // environment colors
-#let c-thm  = rgb(30,  150, 220)   // theorem  — sky blue (softened)
-#let c-def  = rgb(215,  45,  45)   // definition — red (less harsh)
-#let c-prop = rgb(20,  130, 190)   // proposition / lemma / corollary
-#let c-con  = rgb(16,  170, 120)   // example — teal (darkened)
+#let c-thm  = rgb("#4d7f9d")       // theorem
+#let c-def  = rgb("#b45a5a")       // definition — muted red
+#let c-prop = rgb("#4d7f9d")       // proposition / lemma / corollary
+#let c-con  = rgb("#4f937f")       // example — muted teal
 #let c-rem  = rgb(148, 163, 184)   // remark
 
 #let songti-fonts = (
@@ -25,6 +25,153 @@
 
 #let _env-counter(tag) = counter("env-" + tag)
 
+#let _heading-chip(
+  number,
+  title,
+  fs: 13pt,
+  hgt: 20pt,
+  slant: 7pt,
+  pad-x: 8pt,
+  number-fill: muted,
+  title-fill: muted.lighten(32%),
+) = context {
+  let number-text = text(size: fs, weight: "bold", fill: white, number)
+  let title-text = text(size: fs, weight: "bold", fill: white, title + " ")
+  let number-w = measure(number-text).width + 2 * pad-x
+  let title-w = measure(title-text).width + 2 * pad-x
+
+  box(width: number-w + title-w + slant, height: hgt, {
+    place(left + top, polygon(
+      fill: number-fill,
+      (0pt, 0pt),
+      (number-w + slant, 0pt),
+      (number-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: number-w, polygon(
+      fill: title-fill,
+      (slant, 0pt),
+      (title-w + slant, 0pt),
+      (title-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + horizon, dx: pad-x, number-text)
+    place(left + horizon, dx: number-w + slant + pad-x, title-text)
+  })
+}
+
+#let _heading-chip-strong(number, title) = context {
+  let fs = 20pt
+  let hgt = 31pt
+  let slant = 10pt
+  let pad-x = 11pt
+  let white-w = 4pt
+  let tail-w = 8pt
+  let number-text = text(size: fs, weight: "bold", fill: white, number)
+  let title-text = text(size: fs, weight: "bold", fill: white, title + " ")
+  let number-w = measure(number-text).width + 2 * pad-x
+  let title-w = measure(title-text).width + 2 * pad-x
+  let title-x = number-w + white-w
+  let tail-x = title-x + title-w + white-w
+
+  box(width: tail-x + tail-w + slant, height: hgt, {
+    place(left + top, polygon(
+      fill: muted,
+      (0pt, 0pt),
+      (number-w + slant, 0pt),
+      (number-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: number-w, polygon(
+      fill: white,
+      (slant, 0pt),
+      (white-w + slant, 0pt),
+      (white-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: title-x, polygon(
+      fill: muted.lighten(32%),
+      (slant, 0pt),
+      (title-w + slant, 0pt),
+      (title-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: title-x + title-w, polygon(
+      fill: white,
+      (slant, 0pt),
+      (white-w + slant, 0pt),
+      (white-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: tail-x, polygon(
+      fill: muted.lighten(48%),
+      (slant, 0pt),
+      (tail-w + slant, 0pt),
+      (tail-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + horizon, dx: pad-x, number-text)
+    place(left + horizon, dx: title-x + slant + pad-x, title-text)
+  })
+}
+
+#let _heading-chip-title(title) = context {
+  let fs = 20pt
+  let hgt = 31pt
+  let slant = 10pt
+  let pad-x = 11pt
+  let white-w = 4pt
+  let tail-w = 8pt
+  let title-text = text(size: fs, weight: "bold", fill: white, title + " ")
+  let title-w = measure(title-text).width + 2 * pad-x
+
+  box(width: title-w + white-w + tail-w + slant, height: hgt, {
+    place(left + top, polygon(
+      fill: muted,
+      (0pt, 0pt),
+      (title-w + slant, 0pt),
+      (title-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: title-w, polygon(
+      fill: white,
+      (slant, 0pt),
+      (white-w + slant, 0pt),
+      (white-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + top, dx: title-w + white-w, polygon(
+      fill: muted.lighten(32%),
+      (slant, 0pt),
+      (tail-w + slant, 0pt),
+      (tail-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + horizon, dx: pad-x, title-text)
+  })
+}
+
+#let _heading-arrow(number) = context {
+  let fs = 11pt
+  let hgt = 14pt
+  let arrow = 7pt
+  let pad-x = 6pt
+  let number-text = text(size: fs, weight: "bold", fill: white, number)
+  let number-w = measure(number-text).width + 2 * pad-x
+
+  box(width: number-w + arrow, height: hgt, {
+    place(left + top, polygon(
+      fill: muted,
+      (0pt, 0pt),
+      (number-w, 0pt),
+      (number-w + arrow, hgt / 2),
+      (number-w, hgt),
+      (0pt, hgt),
+    ))
+    place(left + horizon, dx: pad-x, number-text)
+  })
+}
+
 #let _reset-env-counters() = {
   for tag in ("theorem", "lemma", "corollary", "proposition", "definition", "axiom") {
     _env-counter(tag).update(0)
@@ -38,13 +185,16 @@
   subtitle: "",
   author:   "",
   date:     "",
+  easy:     false,
   doc,
 ) = {
+  let header-after = if easy { 0 } else { 2 }
+
   set page(
     paper:        "a4",
     margin:       (x: 3cm, top: 2.8cm, bottom: 2.5cm),
     header: context {
-      if counter(page).get().first() > 2 {
+      if counter(page).get().first() > header-after {
         grid(
           columns: (1fr, 1fr),
           align(left,  text(size: 8pt, fill: muted, title)),
@@ -64,7 +214,7 @@
     lang:   "zh",
   )
 
-  show math.equation: set text(font: ("Libertinus Math",) + songti-fonts)
+  show math.equation: set text(font: ("Libertinus Math", "LXGW WenKai Screen" ) )
 
   set par(justify: true, leading: 0.75em, spacing: 1.1em)
 
@@ -79,78 +229,70 @@
   show heading.where(level: 1): it => {
     _reset-env-counters()
     pagebreak(weak: true)
-    v(1.4em)
-    block({
-      text(size: 20pt, weight: "bold", fill: ink,
-        context counter(heading).display("1.") + " " + it.body
-      )
-      v(4pt)
-      line(length: 100%, stroke: 0.8pt + rule-c)
-    })
-    v(0.8em)
-  }
-  show heading.where(level: 2): it => {
-    v(1.4em)
-    context text(size: 13pt, weight: "bold", fill: ink,
-      text(fill: c-def, "§ ")
-      + counter(heading).display("1.1") + "  "
-      + it.body
-    )
+    v(0.9em)
+    _heading-chip-strong(counter(heading).display("1"), it.body)
     v(0.5em)
   }
+  show heading.where(level: 2): it => {
+    v(0.75em)
+    _heading-chip(counter(heading).display("1.1"), it.body)
+    v(0.35em)
+  }
   show heading.where(level: 3): it => {
-    v(0.8em)
-    context text(size: 11pt, weight: "semibold", fill: ink,
-      counter(heading).display("1.1.1") + "  " + it.body
+    v(0.55em)
+    context grid(
+      columns: (auto, auto),
+      column-gutter: 7pt,
+      align: horizon,
+      _heading-arrow(counter(heading).display("1.1.1")),
+      text(size: 11pt, weight: "semibold", fill: ink, it.body),
     )
-    v(0.25em)
+    v(0.15em)
   }
 
   // ── title block ──────────────────────────────
-  align(center, {
-    v(1fr)
-    text(size: 32pt, weight: "bold", fill: ink, title)
-    if subtitle != "" {
-      linebreak()
-      v(6pt)
-      text(size: 14pt, fill: muted, subtitle)
-    }
-    v(14pt)
-    line(length: 55%, stroke: 0.8pt + rule-c)
-    v(10pt)
-    if author != "" or date != "" {
-      text(size: 10pt, fill: muted,
-        if author != "" and date != "" { author + "  ·  " + date }
-        else if author != ""           { author }
-        else                           { date }
+  if not easy {
+    align(center, {
+      v(1fr)
+      text(size: 32pt, weight: "bold", fill: ink, title)
+      if subtitle != "" {
+        linebreak()
+        v(6pt)
+        text(size: 14pt, fill: muted, subtitle)
+      }
+      v(14pt)
+      line(length: 55%, stroke: 0.8pt + rule-c)
+      v(10pt)
+      if author != "" or date != "" {
+        text(size: 10pt, fill: muted,
+          if author != "" and date != "" { author + "  ·  " + date }
+          else if author != ""           { author }
+          else                           { date }
+        )
+      }
+      v(1fr)
+    })
+
+    pagebreak()
+
+    // ── table of contents ────────────────────────
+    {
+      show outline.entry.where(level: 1): it => {
+        v(20pt, weak: true)
+        strong(it)
+      }
+      // 手动渲染标题, 避免被 heading 规则编号
+      _heading-chip-title("目录")
+      v(0.8em)
+      outline(
+        title: none,
+        indent: 1.5em,
+        depth: 2,
       )
     }
-    v(1fr)
-  })
 
-  pagebreak()
-
-  // ── table of contents ────────────────────────
-  {
-    show outline.entry.where(level: 1): it => {
-      v(20pt, weak: true)
-      strong(it)
-    }
-    // 手动渲染标题, 避免被 heading 规则编号
-    block({
-      text(size: 20pt, weight: "bold", fill: ink, "目录")
-      v(4pt)
-      line(length: 100%, stroke: 0.8pt + rule-c)
-    })
-    v(0.8em)
-    outline(
-      title: none,
-      indent: 1.5em,
-      depth: 2,
-    )
+    pagebreak()
   }
-
-  pagebreak()
 
   doc
 }
@@ -159,13 +301,20 @@
 
 #let _env(tag, label, color, title, body, numbering: true) = {
   let cnt = _env-counter(tag)
+  let env-numbering = n => context {
+    let hs = counter(heading).get()
+    let chapter = hs.at(0, default: 0)
+    let section = hs.at(1, default: 0)
+    str(chapter) + "." + str(section) + "." + str(n)
+  }
   let env-body = {
     if numbering { cnt.step() }
     block(
       width:   100%,
+      breakable: true,
       inset:   (left: 12pt, right: 12pt, top: 9pt, bottom: 9pt),
-      radius:  3pt,
-      fill:    color.lighten(90%),
+      radius:  0pt,
+      fill:    white,
       stroke:  (left: 3pt + color),
       align(left, {
         context {
@@ -186,18 +335,16 @@
       })
     )
   }
-
-  figure(
-    env-body,
-    kind: tag,
-    supplement: label,
-    numbering: n => context {
-      let hs = counter(heading).get()
-      let chapter = hs.at(0, default: 0)
-      let section = hs.at(1, default: 0)
-      str(chapter) + "." + str(section) + "." + str(n)
-    },
-  )
+  if numbering {
+    figure(
+      env-body,
+      kind: tag,
+      supplement: label,
+      numbering: env-numbering,
+    )
+  } else {
+    env-body
+  }
 }
 
 #let theorem(body, title: "")    = _env("theorem",    "定理", c-thm,  title, body)
@@ -245,7 +392,7 @@
 
 #let neq(body) = math.equation(
   block: true,
-  numbering: "(1)",
+  numbering: "(I)",
   body,
 )
 
@@ -258,3 +405,15 @@
 #let Der = "Der"
 #let Aut = "Aut"
 #let End = "End"
+#let Lan = "Lan"
+#let Ran = "Ran"
+#let Pic = "Pic"
+#let Ext = "Ext"
+#let Tor = "Tor"
+
+#let Set = $bold("Set")$
+#let PSh = $bold("PSh")$
+#let Sh = $bold("Sh")$
+#let Ab = $bold("Ab")$
+#let Mod = $bold("Mod")$
+#let QCoh = $bold("QCoh")$
