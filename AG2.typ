@@ -147,9 +147,121 @@ $ "自由" ==> "投射" ==> "平坦" $
   下列条件等价:
   1. $M$ 是忠实平坦 $A$-模.
   2. 对任何素理想 $frak(p) subset A$, $M times.o_A kappa(frak(p))$ 非零.
-  3. 对任何极大理想 $frak(m) subset A$, $M times.o_A kappa(frak(m)) = M\/frak(m)M$ 非零.
+  3. 对任何极大理想 $frak(m) subset A$, $M times.o_A kappa(frak(m)) = M\/frak(m)M$ 非re"cmp.utils.feedkeys".run(1)
+  Ke
 ]
 
 == 非分歧态射
 
+#definition(title:[分歧轨迹])[
+  设 $f:X->Y$ 是概形之间的态射, 拟凝聚层 $Omega_f$ 的支撑称为 $f$ 的*分歧轨迹* (ramification locus), 其支撑 $"Supp" Omega_f$ 称为 $f$ 的分歧轨迹, 其像称之为*分支轨迹* (branch locus).
+]
 
+#definition(title:[分歧态射])[
+  设 $f:X->Y$ 是概形之间的态射, 若 $Omega_f=0$, 则称之为*形式非分歧* (formally unramified), 若 $f$ 是局部有限表示的, 则称之为*非分歧* (unramified).
+]
+
+#remark[
+  有些教材会弱化非分歧的条件为 "局部有限型", 但我们这里坚持使用局部有限表示的定义, 因为它在几何上更自然, 并且和光滑态射的定义相容.
+]
+
+#theorem[
+  局部闭嵌入是非分歧的.
+]
+
+#proof[
+  闭嵌入放射局部对应满射
+  $ A ->> A\/I $
+  从而 $Omega_((A\/I)\/A) = 0$. 开嵌入的局部是同构, 相对微分为零. 故局部闭嵌入是非分歧的.
+]
+
+#theorem[
+  若 $S$ 是 $A$ 的乘法封闭集, $Spec S^(-1)A->Spec A$ 是非分歧的.
+]
+
+#proof[
+  因为对任意 $a\/s in S^(-1)A$, 都有
+  $ d (a\/s) = s^(-1)d a - a s^(-2)d s = 0 $
+  这是因为 $a,s in A$, 从而 $d a = d s = 0$. 于是 $Omega_((S^(-1)A)\/A) = 0$.
+]
+#theorem[
+  若 $ell\/k$ 是有限可分域扩张, 则 $Spec ell->Spec k$ 是非分歧的.
+]
+
+#proof[
+  由本原元素定理, 存在 $alpha in ell$ 使得 $ell = k(alpha)$. 设 $f(t) in k[t]$ 是其最小多项式, 则 $ell tilde.eq k[t]\/(f)$. 且
+  $ Omega_(ell\/k) tilde.eq ell d alpha \/(f'(alpha) d alpha) $
+  因为 $f$ 可分, $f'(alpha)!=0$, 从而在 $ell$ 中可逆, 故 $d alpha = 0$, 从而 $Omega_(ell\/k) = 0$. 于是 $Spec ell->Spec k$ 是非分歧的.
+]
+
+#theorem(title:[非分歧的纤维判据 I])[
+  设 $f:X->Y$ 是局部有限型态射, 则 $f$ 非分歧当且仅当对每个点 $q in Y$, 纤维
+  $ f^(-1) (q) = X times_Y Spec kappa(q) $
+  在概形意义下是若干个 $Spec K$ 的无交并, 其中 $K\/kappa(q)$ 是有限可分域扩张. 也就是说这个纤维是 $Spec E$, 其中 $E$ 是一个有限 étale $kappa(q)$-代数.
+]
+
+#theorem(title:[非分歧的纤维判据 II])[
+  设 $f:X->Y$ 是局部有限型态射, 则 $f$ 非分歧当且仅当对每个几何点 $overline(q) in Y$, 纤维
+  $ f^(-1)(overline(q))= overline(q) times_Y X $
+  是若干个 $overline(q)$ 在概形意义下的无交并.
+]
+
+非分歧有一个重要的等价刻画:
+
+#theorem[
+  设 $f:X->Y$ 是局部Noether概形之间的局部有限型态射, 则 $f$ 非分歧当且仅当
+  $ Delta_f:X-> X times_Y X $
+  是开嵌入.
+]
+
+#theorem[
+  设 $pi:X->Y$ 和 $rho:Y->Z$ 是局部有限型的, 令 $tau=rho compose pi$, 则
+  #align(center, diagram({
+	node((-1, 0), [$X$])
+	node((1, 0), [$Y$])
+	node((0, 1), [$Z$])
+	edge((-1, 0), (1, 0), [$pi$], label-side: left, "->")
+	edge((-1, 0), (0, 1), [$tau$], label-side: right, "->")
+	edge((1, 0), (0, 1), [$rho$], label-side: left, "->")
+  }))
+  1. 若 $tau$ 非分歧, 则 $pi$ 非分歧.
+  2. 若 $rho$ 非分歧, $tau$ 相对维数 $n$ 光滑, 则 $pi$ 相对维数 $n$ 光滑.
+]
+
+== 光滑态射&平展态射
+
+#definition(title:[光滑态射])[
+  若态射 $f:X->Y$ 满足:
+
+  1. $f$ 局部有限表示.
+  2. $f$ 相对维数 $n$ 平坦, 即平坦且每个纤维 $X_y$ 具有纯维数 $n$.
+  3. $Omega_f$ 是秩 $n$ 向量丛.
+
+  则称 $f$ 是相对维数 $n$ 的*光滑态射* (smooth morphism).
+]
+
+我们可以描述平展态射为相对维数零的光滑态射, 也就是:
+
+#definition(title:[平展态射])[
+  若态射 $f:X->Y$ 同时是平坦态射和非分歧态射, 则称 $f$ 是*平展态射* (étale morphism).
+]
+
+#theorem[
+  光滑态射是平坦的.
+]
+
+若 $f:X->Y$ 平展, $x|->y$, 并且剩余域相同, 则完备局部环同构
+$ hat(cal(O))_(Y,y) tilde.eq hat(cal(O))_(X,x) $
+一般情况下, 平展态射在形式邻域上只改变剩余域, 不改变局部奇点结构. 平展态射因此保持很多局部性质, 包括且不限于:
+
+1. 正则性.
+2. 既约性.
+3. 正规性.
+4. Cohen-Macaulay.
+5. 局部维数.
+
+这些性质可以通过平展局部验证.
+
+=== 标准平展态射
+
+所谓标准平展态射, 
