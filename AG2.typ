@@ -264,4 +264,115 @@ $ hat(cal(O))_(Y,y) tilde.eq hat(cal(O))_(X,x) $
 
 === 标准平展态射
 
-所谓标准平展态射, 
+平展态射在局部上有一个非常具体的方程模型. 设 $A$ 是环, $f(t) in A[t]$ 是首一多项式, 令
+$ B_0 = A[t]\/(f(t)) $
+因为 $f$ 首一, $B_0$ 作为 $A$-模由
+$ 1,t,...,t^(n-1) $
+生成且自由. 其中 $n = deg f$. 所以 $A->B_0$ 是有限平坦的. 但其不一定非分歧, 这由导数 $f'(t)$ 控制. 相对微分满足
+$ Omega_(B_0\/A) tilde.eq B_0 d t \/ (f'(t) d t) $
+因为关系 $f(t)=0$ 微分后给出 $f'(t) d t = 0$. 因此若在某个局部化
+$ B = (B_0)_b $
+中, $f'(t)$ 可逆, 那么 $d t=0$. 从而 $Omega_(B\/A)=0$. 于是 $A->B$ 非分歧, 从而是平展的. 一个平展态射被称之为*标准平展态射* (standard étale morphism), 是指其局部同构于某个 $A->B$ 的形式, 其中 $B = (A[t]\/(f(t)))_b$, $f$ 是首一多项式, 且 $f'(t)$ 在 $B$ 中可逆. 一个标准事实是, 任何平展态射局部上都同构于某个标准平展态射.
+
+#theorem[
+  开嵌入是平展态射.
+]
+
+#theorem[
+  平展态射的复合和基变换后仍然是平展态射.
+]
+
+#theorem[
+  若 $phi compose psi$ 和 $phi$ 平展, 则 $psi$ 平展.
+]
+
+#theorem[
+  若 $f:X->Y$ 是平展态射, 那么:
+  1. 对任意 $x in X$, $y=f(x)$, $cal(O)_(X,x)$ 和 $cal(O)_(Y,y)$ 的Krull维数相同.
+  2. $f$ 是拟有限的, 即对任意 $y in Y$, $f^(-1)(y)$ 是有限个点的有限集合.
+  3. $f$ 在拓扑上是开映射.
+  4. 若 $X$ 既约, 则 $Y$ 也既约.
+  5. 若 $X$ 正则, 则 $Y$ 也正则.
+  6. 若 $X$ 正规, 则 $Y$ 也正规.
+]
+
+= 下降理论
+
+设 $Omega\/k$ 是域扩张, 那么一个 $k$-簇 $V$ 自然可以通过基变换诱导出一个 $Omega$-簇 $V_Omega = V times.o_k Omega$. 自然会想: 给出一个 $Omega$-簇 $X$, 还要加上什么信息才能确保存在一个 $k$-簇 $Y$ 使得 $X$ 是 $Y$ 的基变换?
+
+更广泛的下降理论要回答的问题是: 什么时候, 一个覆盖上的对象及其数据相容, 来自底空间上的对象.
+
+设 ${p:U->X}$ 是一个覆盖, 例如忠实平坦覆盖, 平展覆盖等. 我们若在 $U$ 上有一个对象 $E_U$, 若他真的是 $X$ 上某个对象 $E$ 的拉回
+$ E_U tilde.eq  p^* E $
+那么在双重交叠 $U times_X U$ 上, 通过两个投影 $p_1,p_2$ 的两个拉回必然同构
+$ p_1^* E_U tilde.eq p_2^* E_U $
+并且在三重交叠 $U times_X U times_X U$ 上, 通过三个投影 $p_(12), p_(23), p_(13)$ 的三个拉回也满足余循环条件
+$ p_(23)^* phi compose p_(12)^* phi = p_(13)^* phi $
+下降理论的核心无非就是两个问题, 即下降数据粘合的有效性, 以及粘合对象的唯一性.
+
+#let pr = $"pr"$
+
+#remark[
+  本章中, 我们使用记号
+  $ pr_i:X times ... times X->X $
+  表示第 $i$ 个投影. 类似地
+  $ pr_(i_1...i_r) : X times ... times X -> X times ... times X $
+  表示在第 $i_1,...,i_r$ 个位置上的投影.
+]
+
+== 下降数据
+
+#definition(title:[下降数据])[
+  设 $S$ 是概形, 设
+  $ {f_i:S_i->S}_(i in I) $
+  是一族态射, 一个拟凝聚层的*下降数据* (descent datum) 是形容 $(cal(F)_i,phi_(i j))$, 由以下内容组成:
+
+  1. 对每个 $i in I$, $cal(F)_i$ 是 $S_i$ 上的拟凝聚层.
+  2. 对每个 $(i,j)in I^2$, 给定一个拟凝聚 $cal(O)_(S_i times_S S_j)$-模同构
+  $ phi_(i j) : pr^*_0 cal(F)_i -> pr^*_1 cal(F)_j $
+  使得对任意 $(i,j,k)in I^3$, $cal(O)_(S_i times_S S_j times_S S_k)$-模的图表
+  #align(center, diagram({
+	node((-2, -1), [$pr^*_0 cal(F)_i$])
+	node((0, -1), [$pr^*_2 cal(F)_k$])
+	node((-1, 0), [$pr^*_1 cal(F)_j$])
+	edge((-2, -1), (0, -1), [$pr^*_(02)phi_(i k)$], label-side: left, "->")
+	edge((-2, -1), (-1, 0), [$pr^*_(01)phi_(i j)$], label-side: right, "->")
+	edge((-1, 0), (0, -1), [$pr^*_(12)phi_(j k)$], label-side: right, "->")
+  }))
+  交换, 这称之为*余循环条件* (cocycle condition).
+] <def-descent-datum>
+
+所谓余循环条件, 可以理解为在三重交上, 从一份数据走到另一份时, 结果不依赖于所选取的路径. 这保证了局部对象之间的识别没有歧义.
+
+#example[
+  例如若每个 $cal(F)_i$ 都是秩 $r$ 的自由层
+  $ cal(F)_i tilde.eq cal(O)^(plus.o r)_(S_i) $
+  在二重交上, 同构 $phi_(i j)$ 可以用可逆矩阵表示
+  $ g_(i j) in "GL"_r (cal(O)_(S_i times_S S_j)) $
+  那么余循环条件就变为
+  $ g_(j k)g_(i j) = g_(i k) $
+  这就是经典的 "Čech cocycle" 条件.
+]
+
+下降数据之间亦可定义态射
+
+#definition(title:[下降数据的态射])[
+  设 $S$ 上的下降数据 $(cal(F)_i,phi_(i j))$ 和 $(cal(G)_i,psi_(i j))$ 已知, 一个*下降数据的态射* (morphism of descent data) 是一族拟凝聚层的态射
+  $ alpha_i:cal(F)_i->cal(G)_i $
+  使得全体图表
+  #align(center, diagram({
+	node((-1, 0), [$"pr"^*_0 cal(F)_i$])
+	node((0, 0), [$"pr"^*_1 cal(F)_j$])
+	node((-1, 1), [$"pr"^*_0 cal(G)_i$])
+	node((0, 1), [$"pr"^*_1 cal(G)_j$])
+	edge((-1, 0), (-1, 1), [$"pr"^*_0 alpha_i$], label-side: right, "->")
+	edge((0, 0), (0, 1), [$"pr"^*_1 alpha_j$], label-side: left, "->")
+	edge((-1, 0), (0, 0), [$phi_(i j)$], label-side: left, "->")
+	edge((-1, 1), (0, 1), [$psi_(i j)$], label-side: right, "->")
+  }))
+  交换.
+]
+
+对于选定的覆盖 $frak(U)={f_i:S_i->S}_(i in I)$, 我们定义了拟凝聚层的下降数据范畴
+$ "Desc"_(QCoh)(frak(U)\/S) $
+对象是下降数据, 态射是下降数据的态射.

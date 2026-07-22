@@ -175,7 +175,39 @@
 #let _reset-env-counters() = {
   for tag in ("theorem", "lemma", "corollary", "proposition", "definition", "axiom") {
     _env-counter(tag).update(0)
-    counter(figure.where(kind: tag)).update(0)
+  }
+}
+
+#let _env-labels = (
+  "env-theorem": "定理",
+  "env-lemma": "引理",
+  "env-corollary": "推论",
+  "env-proposition": "命题",
+  "env-definition": "定义",
+  "env-axiom": "公理",
+)
+
+#let _env-ref(it) = {
+  let el = it.element
+  if el != none and repr(el.func()) == "block" and repr(el.body.func()) == "align" {
+    let inner = el.body.body
+    if repr(inner.func()) == "sequence" and inner.children.len() > 0 {
+      let first = inner.children.first()
+      if repr(first.func()) == "counter-update" and first.has("key") and first.key in _env-labels {
+        let hs = counter(heading).at(el.location())
+        let chapter = hs.at(0, default: 0)
+        let section = hs.at(1, default: 0)
+        let n = counter(first.key).at(el.location()).first() + 1
+        let number = str(chapter) + "." + str(section) + "." + str(n)
+        link(el.location(), _env-labels.at(first.key) + " " + number)
+      } else {
+        it
+      }
+    } else {
+      it
+    }
+  } else {
+    it
   }
 }
 
@@ -217,6 +249,8 @@
   show math.equation: set text(font: ("Libertinus Math", "LXGW WenKai Screen" ) )
 
   set par(justify: true, leading: 0.75em, spacing: 1.1em)
+
+  show ref: _env-ref
 
   // fake bold for CJK fonts that lack a bold variant
   show strong: it => text(stroke: 0.35pt + black, weight: "bold", it)
@@ -301,50 +335,32 @@
 
 #let _env(tag, label, color, title, body, numbering: true) = {
   let cnt = _env-counter(tag)
-  let env-numbering = n => context {
-    let hs = counter(heading).get()
-    let chapter = hs.at(0, default: 0)
-    let section = hs.at(1, default: 0)
-    str(chapter) + "." + str(section) + "." + str(n)
-  }
-  let env-body = {
-    if numbering { cnt.step() }
-    block(
-      width:   100%,
-      breakable: true,
-      inset:   (left: 12pt, right: 12pt, top: 9pt, bottom: 9pt),
-      radius:  0pt,
-      fill:    white,
-      stroke:  (left: 3pt + color),
-      align(left, {
-        context {
-          let hs = counter(heading).get()
-          let chapter = hs.at(0, default: 0)
-          let section = hs.at(1, default: 0)
-          let n = cnt.get().first()
-          let number = str(chapter) + "." + str(section) + "." + str(n)
+  block(
+    width:   100%,
+    breakable: true,
+    inset:   (left: 12pt, right: 12pt, top: 9pt, bottom: 9pt),
+    radius:  0pt,
+    fill:    white,
+    stroke:  (left: 3pt + color),
+    align(left, {
+      if numbering { cnt.step() }
+      context {
+        let hs = counter(heading).get()
+        let chapter = hs.at(0, default: 0)
+        let section = hs.at(1, default: 0)
+        let n = cnt.get().first()
+        let number = str(chapter) + "." + str(section) + "." + str(n)
 
-          text(weight: "semibold", fill: color,
-            label
-            + if numbering { " " + number } else { "" }
-            + if title != "" { " (" + title + ")" } else { "" }
-            + ". "
-          )
-        }
-        body
-      })
-    )
-  }
-  if numbering {
-    figure(
-      env-body,
-      kind: tag,
-      supplement: label,
-      numbering: env-numbering,
-    )
-  } else {
-    env-body
-  }
+        text(weight: "semibold", fill: color,
+          label
+          + if numbering { " " + number } else { "" }
+          + if title != "" { " (" + title + ")" } else { "" }
+          + ". "
+        )
+      }
+      body
+    })
+  )
 }
 
 #let theorem(body, title: "")    = _env("theorem",    "定理", c-thm,  title, body)
@@ -399,6 +415,10 @@
 #let colim = $op("colim")$
 #let Spec = $op("Spec")$
 
+#let act = $arrow.half.cw$
+
+#let etale = "ét"
+
 #let Hom = "Hom"
 #let Fun = "Fun"
 #let Map = "Map"
@@ -410,10 +430,17 @@
 #let Pic = "Pic"
 #let Ext = "Ext"
 #let Tor = "Tor"
+#let op = "op"
 
-#let Set = $bold("Set")$
-#let PSh = $bold("PSh")$
-#let Sh = $bold("Sh")$
-#let Ab = $bold("Ab")$
-#let Mod = $bold("Mod")$
-#let QCoh = $bold("QCoh")$
+#let Set = $bold(sans("Set"))$
+#let PSh = $bold(sans("PSh"))$
+#let Sh = $bold(sans("Sh"))$
+#let Ab = $bold(sans("Ab"))$
+#let Mod = $bold(sans("Mod"))$
+#let QCoh = $bold(sans("QCoh"))$
+#let Grp = $bold(sans("Grp"))$
+#let Sch = $bold(sans("Sch"))$
+#let Top = $bold(sans("Top"))$
+#let Aff = $bold(sans("Aff"))$
+#let Cat = $bold(sans("Cat"))$
+#let cat(name) = $bold(sans(name))$
