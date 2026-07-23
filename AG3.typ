@@ -2081,6 +2081,20 @@ $ (xi, xi_i, xi_(i j), xi_(i j k)) |-> (xi_i, xi_(i j), xi_(i j k)) $
 $ F(u) <-^tilde.eq F_"comp" ({u_i->u}) -> F_"desc" ({u_i->u}) tilde.eq F({u_i->u}) $
 这个函子称为*下降函子* (descent functor). 直观上说, 它把一个整体对象送到它在覆盖上的局部展开.
 
+#remark(title:[下降函子的构造])[
+  我们可以用显式的方法来描述下降函子
+  $ "res"_frak(u) : F(u) -> F(frak(u)) $
+  给定覆盖 $frak(u) = {u_i->u}$, 对于 $xi in F(u)$, 定义 $xi_i := sigma^*_i xi$ 在 $u_(i j)$ 上, 因为
+  $ sigma_i compose pr_1 = sigma_j compose pr_2 : u_(i j) -> u $ 
+  所以 $pr^*_1 sigma^*_i xi$ 和 $pr^*_2 sigma^*_j xi$ 都是 $xi$ 沿着 $u_(i j)->u$ 的拉回, 因此我们有自然同构
+  $ phi^xi_(i j) : pr^*_2 sigma^*_j xi ->^~ pr^*_1 sigma^*_i xi $
+  于是
+  $ "res"_frak(u)(xi) := (sigma^*_i xi, phi^xi_(i j)) $
+  对态射 $alpha:xi->eta$, 定义
+  $ "res"_frak(u)(alpha) := {sigma^*_i alpha:sigma^*_i xi -> sigma^*_i eta} $
+  也就是将 $xi$ 打到 $eta$ 的态射沿着覆盖的每个分量拉回.
+]
+
 上式中的四个范畴很容易混淆, 下面将它们放在一起比较. 设
 $ u_(i j)=u_i times_u u_j, quad u_(i j k)=u_i times_u u_j times_u u_k $
 
@@ -2261,13 +2275,13 @@ $ Hom_C (h_u,F) -> Hom_C (h_frak(u),F) $
   其中第一个等价来自2-Yoneda引理, 最后一条箭头是通常的下降函子. 因此, 从覆盖筛出发得到的限制函子, 正是整体对象限制为下降数据这一构造的无选择版本.
 ]
 
-== 叠和预叠
+== 预叠和叠
 
 所谓叠, 就是允许对象有自同构的层. 从根本上说, 如果层是局部对象按"相等"来粘合的, 那么叠就是局部对象按"同构"来粘合的.
 
-=== 叠和预叠的定义
+=== 预叠和叠的定义
 
-#definition(title:[叠和预叠])[
+#definition(title:[预叠和叠])[
   设 $F->C$ 是景 $C$ 上的纤维范畴, 我们称:
   
   1. 若对任何 $C$ 上的覆盖 ${u_i->u}$, 下降函子 $F(u) -> F({u_i->u})$ 是全忠实的, 则称 $F$ 是一个*预叠* (prestack).
@@ -2307,5 +2321,42 @@ $ alpha:xi->eta $
 
 === 有效下降数据
 
+#definition(title:[有效下降数据])[
+  设 $(xi_i,phi_(i j)) in F({u_i->u})$ 是一个带下降数据的对象, 如果它同构于某个整体对象 $xi in F(u)$ 在限制函子
+  $ "res":F(u) -> F({u_i->u}) $
+  下的像, 则称 $(xi_i,phi_(i j))$ 是*有效的* (effective).
+]
 
+所谓有效下降数据, 就是指 "一组看起来能够粘合的局部对象, 实际上确实来自某个整体对象". 我们有另一种方式来描述之: 带下降数据的对象
+$ (xi_i,phi_(i j)) $
+是有效的, 当且仅当存在一个整体对象 $xi in F(u)$, 以及 $sigma_i:u_i->u$ 上的Cartesian态射 $xi_i->xi$, 使得对任意 $i,j$ 下图交换:
+#align(center, diagram({
+	node((-1, 0), [$"pr"^*_2 xi_j$])
+	node((1, 0), [$"pr"^*_1 xi_i$])
+	node((-1, 1), [$xi_j$])
+	node((1, 1), [$xi_i$])
+	node((0, 1), [$xi$])
+	edge((-1, 1), (0, 1), "->")
+	edge((1, 1), (0, 1), "->")
+	edge((-1, 0), (-1, 1), "->")
+	edge((1, 0), (1, 1), "->")
+	edge((-1, 0), (1, 0), [$phi_(i j)$], label-side: left, "->")
+}))
+也就是说, 在二重交 $u_(i j)$ 上, 先用转移同构
+$ phi_(i j) : "pr"^*_2 xi_j ->^~ "pr"^*_1 xi_i $
+再映到整体对象 $xi$, 与直接由 $xi_j$ 映到整体对象 $xi$ 的结果是相同的. 这正是下降数据的有效性所要求的. 显然有下判别:
 
+#theorem(title:[叠的等价定义])[
+  $F$ 是一个叠, 当且仅当 $F$ 是预叠且所有下降数据都是有效的.
+]
+
+=== 叠作为层的推广
+
+#theorem(title:[层与叠的对应])[
+  设 $C$ 是一个景, 且
+  $ F:C^op->Set $
+  是一个函子, 我们可以将其视作是纤维于集合的纤维范畴 $F->C$, 那么:
+  
+  1. $F$ 是一个预叠当且仅当 $F$ 是一个分离的预层.
+  2. $F$ 是一个叠当且仅当 $F$ 是一个层.
+]
