@@ -114,10 +114,10 @@ Yoneda引理是数学里最重要的抽象废话之一:
 === 几个重要的群概形
 
 #example[
-  对任何 $U in Sch\/S$, 有
+  对任何 $U in Sch_(\/S)$, 有
   $ Hom_S (U,AA^1_S) tilde.eq Gamma(U,cal(O)_U) $
   是一个Abel群, 显然其表示了函子
-  $ h_(AA^1_S):(Sch\/S)^op --> Ab $
+  $ h_(AA^1_S):(Sch_(\/S))^op --> Ab $
   从而 $AA^1_S$ 是一个群概形, 通常记作 $GG_(a,S)$.
 ]
 
@@ -131,7 +131,7 @@ $ R[t] -> R[t], quad t |-> -t $
 
 #example[
   $GG_(m,S) = AA^1_S\\0$ 表示函子
-  $ cal(O)^*:(Sch\/S)^op --> Grp $
+  $ cal(O)^*:(Sch_(\/S))^op --> Grp $
   将 $S$-概形 $U->S$ 送到 $cal(O)^*(U)$, 即 $U$ 上的可逆正则函数群. 显然其诱导群概形, 称之为*乘法群概形* (multiplicative group scheme), 记作 $GG_(m,S)$.
 ]
 
@@ -141,7 +141,7 @@ $ R[t,t^(-1)] -> R[t_1,t_1^(-1),t_2,t_2^(-1)], quad t |-> t_1 t_2 $
 
 #example[
   考虑函子
-  $ (Sch\/S)^op --> Set $
+  $ (Sch_(\/S))^op --> Set $
   将 $S$-概形 $U->S$ 打到 $M_n (cal(O)(U))$ 为 $n times n$ 矩阵群. 这个函子由 $M_(n,S):=AA^(n^2)_S$ 表示, 考虑行列式映射给出的概形态射
   $ det:M_(n,S) --> AA^1_S $
   记 $"GL"_(n,S)$ 为开子概形 $GG_(m,S) subset AA^1_S$ 在 $det$ 下的逆像, 则 $"GL"_(n,S)$ 是一个群概形, 称之为*广义线性群概形* (general linear group scheme).
@@ -166,7 +166,7 @@ $ R[t,t^(-1)] -> R[t_1,t_1^(-1),t_2,t_2^(-1)], quad t |-> t_1 t_2 $
 固定范畴 $C$ 后所有群对象构成一个范畴 $Grp(C)$. 若 $F:C->D$ 是保持有限乘积的函子, 不难验证其诱导函子 $Grp(F):Grp(C)->Grp(D)$ 也是一个函子.
 
 #example[
-  若 $C=Sch\/S$, 群对象同态 $GG_(m,S)->GG_(m,S)$ 可以由整数 $n in ZZ$ 给出:
+  若 $C=Sch_(\/S)$, 群对象同态 $GG_(m,S)->GG_(m,S)$ 可以由整数 $n in ZZ$ 给出:
   $ x |-> x^n $
   在坐标环上对应
   $ R[t,t^(-1)] -> R[t,t^(-1)], quad t |-> t^n $
@@ -280,7 +280,7 @@ $ R[t,t^(-1)] -> R[t_1,t_1^(-1),t_2,t_2^(-1)], quad t |-> t_1 t_2 $
 ]
 
 #example(title:[小étale景])[
-  设 $X$ 是概形, 考虑 $Sch\/X$ 的全子范畴 $X_etale$ 定义为:
+  设 $X$ 是概形, 考虑 $Sch_(\/X)$ 的全子范畴 $X_etale$ 定义为:
 
   1. 对象是所有étale的 $X$-概形 $U->X$.
   2. 态射是 $X$-概形之间的态射.
@@ -305,9 +305,9 @@ $ R[t,t^(-1)] -> R[t_1,t_1^(-1),t_2,t_2^(-1)], quad t |-> t_1 t_2 $
 ]
 
 #definition(title:[fppf景])[
-  取范畴 $Sch\/S$, 对象 $X->S$ 的覆盖族指定为全体 $S$-态射
+  取范畴 $Sch_(\/S)$, 对象 $X->S$ 的覆盖族指定为全体 $S$-态射
   $ {f_i:U_i->X}_i $
-  满足每个 $f_i$ 都是平坦且局部有限表示的, 并且联合满射. 称之为*fppf景* (fppf site), 记作 $Sch\/S_"fppf"$.
+  满足每个 $f_i$ 都是平坦且局部有限表示的, 并且联合满射. 称之为*fppf景* (fppf site), 记作 $Sch_(\/S)_"fppf"$.
 ]
 术语 "fppf" 来自法语 "fidèlement plat et de présentation finie".
 
@@ -383,11 +383,11 @@ $ R[t,t^(-1)] -> R[t_1,t_1^(-1),t_2,t_2^(-1)], quad t |-> t_1 t_2 $
 ]
 
 #definition(title:[fpqc景])[
-  取范畴 $Sch\/S$, 对象 $X->S$ 的覆盖族指定为全体 $S$-态射
+  取范畴 $Sch_(\/S)$, 对象 $X->S$ 的覆盖族指定为全体 $S$-态射
   $ {U_i->U}_i $
   使得诱导的态射
   $ union.sq.big_i U_i -> U $
-  是fpqc的. 称之为*fpqc景* (fpqc site), 记作 $Sch\/S_"fpqc"$.
+  是fpqc的. 称之为*fpqc景* (fpqc site), 记作 $Sch_(\/S)_"fpqc"$.
 ]
 
 我们定义了四种常用的景, 它们的精细程度从粗糙到精细依次为 Zariski, étale, fppf, fpqc. 也就是说, 每个 Zariski 覆盖都是 étale 覆盖, 每个 étale 覆盖都是 fppf 覆盖, 每个 fppf 覆盖都是 fpqc 覆盖. 所以拓扑越精细, 需要满足的层条件越强.
@@ -681,7 +681,7 @@ $ frak(u) times_u frak(v) := {u_i times_u v_j -> u} $
 按照Grothendieck拓扑的术语, 这里我们所定义的对象应该称为一个*预拓扑* (pretopology), 两个等价的预拓扑定义同一个拓扑.
 
 #example[
-  在 $Sch\/S$ 上, 由联合满射的局部有限表示的光滑态射定义的预拓扑, 即*光滑拓扑*与平展拓扑是等价的.
+  在 $Sch_(\/S)$ 上, 由联合满射的局部有限表示的光滑态射定义的预拓扑, 即*光滑拓扑*与平展拓扑是等价的.
 ]
 
 === 饱和拓扑
@@ -728,7 +728,7 @@ $ U_i inter U_j $
 
 #theorem[
   一个可表函子
-  $ h_X:(Sch\/S)^op -> Set $
+  $ h_X:(Sch_(\/S))^op -> Set $
   关于Zariski拓扑是一个层.
 ]
 
@@ -744,7 +744,7 @@ $ U_i inter U_j $
 
 #theorem(title:[Grothendieck])[
   一个可表函子
-  $ h_X:(Sch\/S)^op -> Set $
+  $ h_X:(Sch_(\/S))^op -> Set $
   关于fpqc拓扑是一个层.
 ] <thm-grothendieck-sheaf>
 
@@ -754,7 +754,7 @@ $ a:v->x $
 $ v times_u v arrows^(pr_1)_(pr_2) v ->^a x $
 所得的两个复合相同, 那么 $a$ 就能唯一经由 $u$ 分解. 换句话说, 我们要求
 $ Hom_C (u,x) -> Hom_C (v,x) arrows Hom_C (v times_u v,x) $
-是等化子图表. 上述定理表明, 每个概形的fpqc态射在 $Sch\/S$ 中都是有效满态射.
+是等化子图表. 上述定理表明, 每个概形的fpqc态射在 $Sch_(\/S)$ 中都是有效满态射.
 
 #remark[
   这句话的几何含义是: 如果两个从 $v$ 出发的态射在 $v times_u v$ 上一致, 那么它们确实来自 $u$. 换句话说, 对概形态射来说, fpqc 覆盖足够细, 但又没有细到破坏粘合. 这是 fpqc 下降理论能够成立的根源之一.
@@ -778,7 +778,7 @@ $ Hom_C (u,x) -> Hom_C (v,x) arrows Hom_C (v times_u v,x) $
 
 #example[
   Zariski, étale, fppf, fpqc 拓扑在概形范畴上都是次典范的. 这并不是一句空话: 它保证了我们把概形 $X$ 看作函子
-  $ h_X:(Sch\/S)^op -> Set $
+  $ h_X:(Sch_(\/S))^op -> Set $
   时, 不会丢失通常的粘合性质. 因此 "概形是某种层" 这句话可以严肃地使用.
 ]
 
@@ -1303,7 +1303,7 @@ $ Phi ~> "带拉回选择的纤维范畴" ~> "相伴的伪函子" $
 
 == 纤维范畴 $QCoh$
 
-我们来定义一个非常重要的纤维范畴 $QCoh\/S -> Sch\/S$. 对每个概形 $U$, 我们定义 $QCoh(U)$ 为 $U$ 上拟凝聚层的范畴. 并且对于给定的态射 $f:U->V$, 有拉回函子
+我们来定义一个非常重要的纤维范畴 $QCoh_(\/S) -> Sch_(\/S)$. 对每个概形 $U$, 我们定义 $QCoh(U)$ 为 $U$ 上拟凝聚层的范畴. 并且对于给定的态射 $f:U->V$, 有拉回函子
 $ f^*:QCoh(V)->QCoh(U) $
 然而, 给定两个态射
 $ U-->^f V-->^g W $
@@ -1354,7 +1354,7 @@ $ alpha_(f,g)(cal(P)) : f^*g^*cal(P) -->^~ (g f)^*cal(P) $
 $ alpha_(f,g) : f^*g^* =>^~ (g f)^* $
 两边都是
 $ QCoh(W) -> QCoh(U) $
-的函子. 这就是伪函子 $QCoh$ 的结合同构. 容易验证这满足伪函子的条件, 与这个伪函子相伴的纤维范畴就是 $QCoh\/S$.
+的函子. 这就是伪函子 $QCoh$ 的结合同构. 容易验证这满足伪函子的条件, 与这个伪函子相伴的纤维范畴就是 $QCoh_(\/S)$.
 
 #example[
   在仿射情形这件事非常具体. 设
@@ -1530,11 +1530,11 @@ $ C\/s -> C $
 设 $F->C$ 是一个纤维范畴, 而 $G$ 是 $F$ 的一个全子范畴, 并满足若 $eta in G$ 且 $xi->eta$ 是 $F$ 中的一条Cartesian态射, 那么 $xi in G$. 也就是说 $G$ 对拉回封闭. 那么 $G$ 是 $F$ 的一个纤维子范畴. 而且 $G$ 中的Cartesian态射恰好是 $F$ 中终点属于 $G$ 的Cartesian态射. 
 
 例如局部自由层的范畴是
-$ QCoh\/S->Sch\/S $
+$ QCoh_(\/S)->Sch_(\/S) $
 的一个纤维子范畴.
 
 #example[
-  固定整数 $r >= 0$, 秩为 $r$ 的局部自由层也构成 $QCoh\/S$ 的纤维子范畴. 这是因为局部自由和秩为 $r$ 都能在底空间上局部检查, 并且被任意拉回保持. 反过来, "全局生成的拟凝聚层" 通常不构成这样的纤维子范畴, 因为全局生成性在任意基变换下未必按朴素方式保持.
+  固定整数 $r >= 0$, 秩为 $r$ 的局部自由层也构成 $QCoh_(\/S)$ 的纤维子范畴. 这是因为局部自由和秩为 $r$ 都能在底空间上局部检查, 并且被任意拉回保持. 反过来, "全局生成的拟凝聚层" 通常不构成这样的纤维子范畴, 因为全局生成性在任意基变换下未必按朴素方式保持.
 ]
 
 #remark[
@@ -1807,12 +1807,12 @@ $ beta : pr^*_2 rho -> rho $
 ]
 
 #example[
-  令 $F=QCoh\/S$, 设群概形 $g$ 作用在 $S$-概形 $x$ 上. 那么 $F^g(x)$ 就是通常意义下的 $g$-等变拟凝聚层范畴. 一个对象是 $cal(F) in QCoh(x)$, 外加同构
+  令 $F=QCoh_(\/S)$, 设群概形 $g$ 作用在 $S$-概形 $x$ 上. 那么 $F^g(x)$ 就是通常意义下的 $g$-等变拟凝聚层范畴. 一个对象是 $cal(F) in QCoh(x)$, 外加同构
   $ beta:pr_2^*cal(F) -> alpha^*cal(F) $
   满足单位条件和 cocycle 条件. 也就是说, 群元素把点从 $p$ 移到 $g p$ 时, 层在这两个点附近的拉回也被一致地识别起来.
 ]
 
-= 下降理论
+= 下降与叠
 
 下降理论要回答的问题是: 什么时候, 一个覆盖上的对象及其数据相容, 来自底空间上的对象.
 
@@ -2360,3 +2360,344 @@ $ phi_(i j) : "pr"^*_2 xi_j ->^~ "pr"^*_1 xi_i $
   1. $F$ 是一个预叠当且仅当 $F$ 是一个分离的预层.
   2. $F$ 是一个叠当且仅当 $F$ 是一个层.
 ]
+
+#proof[
+  考虑一个覆盖 ${u_i->u}$, 纤维范畴 $F->C$ 在 $u$ 上的纤维恰好就是集合 $F(u)$, 而 $F({u_i->u})$ 是所有族
+  $ (xi_i) in product_i F(u_i) $
+  的集合, 其中每个族都满足对任意 $i,j$, $xi_i$ 和 $xi_j$ 拉回到
+  $ u_i times_u u_j $
+  后相等, 也就是说经两个投影
+  $ u_i times_u u_j -> u_i, quad u_i times_u u_j -> u_j $
+  所得限制必须一致, 函子
+  $ "res":F(u) -> F({u_i->u}) $
+  将每个整体截面 $xi in F(u)$ 送到它在覆盖上的限制族 $(xi|_(u_i))$. 将集合之间的映射看作离散范畴之间的函子, 那么:
+
+  - 函子全忠实当且仅当是单射.
+  - 函子是范畴等价当且仅当是双射.
+
+  因此:
+
+  - 预叠条件等价于限制映射是单射, 即 $F$ 是分离预层.
+  - 叠条件等价于限制映射是双射, 即 $F$ 是层.
+]
+
+== 下降数据的函子性
+
+下降数据具有三种意义下的函子性:
+
+1. 关于纤维范畴之间的态射具有函子性.
+2. 关于对象具有函子性.
+3. 关于覆盖的加细具有函子性.
+
+=== 关于纤维范畴之间的态射的函子性
+
+设 $H:F->G$ 是 $C$ 上纤维范畴之间的态射, 对任意覆盖 $frak(u)={u_i->u}$, 我们得到一个函子
+$ H_frak(u) = F(frak(u)) -> G(frak(u)) $
+对象层面, 按显然的方式定义:
+$ H_frak(u)({xi_i},{phi_(i j)}) = ({H xi_i}, {H phi_(i j)}) $
+态射层面定义为
+$ H_frak(u)({alpha_i}) = {H alpha_i} $
+进一步若 $rho:H=>K$ 是两个纤维范畴态射之间保持基底的自然变换, 那么诱导函子的自然变换
+$ rho_frak(u) : H_frak(u) => K_frak(u) $
+定义为
+$ (rho_frak(u))_(({xi_i},{phi_(i j)})) = {rho_(xi_i)} $
+因此, 若 $H$ 是纤维范畴之间的等价, 那么诱导函子 $H_frak(u)$ 也是等价. 并且下图在同构意义下交换:
+
+#align(center, diagram({
+	node((0, 0), [$F(u)$])
+	node((1, 0), [$F(frak(u))$])
+	node((1, 1), [$G(frak(u))$])
+	node((0, 1), [$G(u)$])
+	edge((0, 0), (0, 1), [$H$], label-side: right, "->")
+	edge((1, 0), (1, 1), [$H_(frak(u))$], label-side: left, "->")
+	edge((0, 0), (1, 0), [$"res"$], label-side: left, "->")
+	edge((0, 1), (1, 1), [$"res"$], label-side: right, "->")
+}))
+
+从而我们得到了结论:
+
+#theorem[
+  若 $H:F->G$ 是纤维范畴之间的等价, 并且 $F(u)->F(frak(u))$ 是范畴等价, 那么 $G(u)->G(frak(u))$ 也是范畴等价.
+]
+
+#corollary[
+  若景 $C$ 上的两个纤维范畴彼此等价, 其中一个是叠/预叠, 那么另一个也是叠/预叠.
+]
+
+我们可以用筛的语言更优雅地表述: 态射 $H:F->G$ 诱导出函子
+$ H_*:Hom(h_frak(u),F) -> Hom(h_frak(u),G) $
+在对象层面就是与 $H$ 复合, 也就是说若 $Phi:h_frak(u)->F$, 那么
+$ H_*(Phi) = H compose Phi : h_frak(u) -> G $
+在这种表述下, 前面的图变成
+#align(center, diagram({
+	node((-1, 0), [$Hom(h_u,F)$])
+	node((0, 0), [$Hom(h_frak(u),F)$])
+	node((-1, 1), [$Hom(h_u,G)$])
+	node((0, 1), [$Hom(h_frak(u),G)$])
+	edge((-1, 0), (-1, 1), [$H_*$], label-side: right, "->")
+	edge((0, 0), (0, 1), [$H_*$], label-side: left, "->")
+	edge((-1, 0), (0, 0), "->")
+	edge((-1, 1), (0, 1), "->")
+}))
+并且要求严格交换.
+
+=== 关于对象的函子性
+
+后面并不需要完整讨论下降数据关于对象的函子性, 因此这里只简述其基本想法. 设
+$ {u_i->u} $
+是一个覆盖, $v->u$ 是一个态射. 将覆盖沿 $v->u$ 拉回, 得到 $v$ 上的覆盖
+$ {v times_u u_i -> v} $
+并且存在一个函子
+$ F({u_i->u}) -> F({v times_u u_i->v}) $
+
+若 $(xi_i,phi_(i j))$ 是 $F({u_i->u})$ 中的一个对象, 那么它在 $F({v times_u u_i->v})$ 中的像, 是把每个局部对象 $xi_i$ 沿投影
+$ v times_u u_i -> u_i $
+拉回, 并把每个转移同构 $phi_(i j)$ 沿相应的投影
+$ v times_u u_i times_u u_j -> u_i times_u u_j $
+拉回所得到的下降数据. 拉回保持同构和复合, 因此原来的余循环条件也被保留下来.
+
+=== 关于覆盖加细的函子性
+
+设 $F->C$ 是纤维范畴, 并设
+$ frak(u)={u_i->u}_(i in I), quad frak(v)={v_a->u}_(a in A) $
+是两个覆盖, 其中 $frak(v)$ 是 $frak(u)$ 的加细. 按照加细的定义, 对每个 $a in A$, 可以选择一个指标 $mu(a) in I$ 和一个分解
+$ v_a ->^(f_a) u_(mu(a)) -> u $
+这些选择诱导一个函子
+$ F(frak(u)) -> F(frak(v)) $
+它把粗覆盖上的下降数据限制到更细的覆盖上.
+
+具体地, 若
+$ (xi_i,phi_(i j)) in F(frak(u)) $
+那么在 $v_a$ 上取局部对象
+$ xi'_a=f_a^* xi_(mu(a)) $
+对于 $v_a times_u v_b$, 两个分解 $f_a,f_b$ 诱导态射
+$ (f_a,f_b):v_a times_u v_b -> u_(mu(a)) times_u u_(mu(b)) $
+将转移同构 $phi_(mu(a) mu(b))$ 沿它拉回, 就得到 $xi'_a$ 与 $xi'_b$ 之间的新转移同构. 原下降数据的余循环条件拉回后仍然成立, 因此这些数据确实给出 $F(frak(v))$ 中的对象.
+
+态射的定义同样直接. 若
+$ {alpha_i}:(xi_i,phi_(i j))->(eta_i,psi_(i j)) $
+是 $F(frak(u))$ 中的态射, 就在每个 $v_a$ 上取
+$ f_a^* alpha_(mu(a)):f_a^* xi_(mu(a))->f_a^* eta_(mu(a)) $
+这些态射在二重交上相容, 从而构成细覆盖上的下降数据态射.
+
+这个函子的写法依赖于指标函数 $mu:A->I$ 和具体分解 $f_a$ 的选择, 但它的自然同构类不依赖这些选择. 的确, 若另一组选择为
+$ v_a ->^(g_a) u_(nu(a)) -> u $
+那么 $(f_a,g_a)$ 诱导态射
+$ v_a -> u_(mu(a)) times_u u_(nu(a)) $
+把原下降数据在二重交上的转移同构拉回, 便得到典范同构
+$ f_a^* xi_(mu(a)) tilde.eq g_a^* xi_(nu(a)) $
+余循环条件保证这些典范同构与细覆盖上的转移同构相容, 因而给出两种选择所产生的函子之间的自然同构.
+
+若 $frak(w)$ 是 $frak(v)$ 的加细, 因而也是 $frak(u)$ 的加细, 则有函子
+$ F(frak(u))->F(frak(v)), quad F(frak(v))->F(frak(w)), quad F(frak(u))->F(frak(w)) $
+前两个函子的复合与第三个函子自然同构. 所以, 用覆盖族和具体分解来描述时, 关于加细的函子性只在自然同构意义下成立.
+
+#remark[
+  筛语言会把上面的选择全部收拾干净. 加细关系等价于覆盖筛的包含
+  $ h_frak(v) subset h_frak(u) $
+  因而预复合直接给出限制函子
+  $ Hom_C (h_frak(u),F) -> Hom_C (h_frak(v),F) $
+  不需要选择 $mu$ 或任何分解. 若
+  $ h_frak(w) subset h_frak(v) subset h_frak(u) $
+  那么两次限制的复合严格等于从 $h_frak(u)$ 到 $h_frak(w)$ 的直接限制. 换句话说, 覆盖族的语言给出"相差一个自然同构"的函子性, 而筛的语言把它变成了字面成立的严格函子性.
+]
+
+直观地说, 关于加细的函子性就是: 粗覆盖上的下降数据可以相容地限制到任意更细的覆盖上. 加细只是把原来的局部区域切成更小的片段, 因而原来定义在大块上的局部对象、转移同构和局部态射都可以继续拉回到这些小块上.
+
+如果有连续的加细
+$ frak(w) prec frak(v) prec frak(u) $
+那么先从 $frak(u)$ 限制到 $frak(v)$、再限制到 $frak(w)$, 与直接从 $frak(u)$ 限制到 $frak(w)$ 自然同构. 这正是所谓的"函子性". 使用覆盖族时, 因为需要选择每个小块经过哪个大块分解, 这个结论通常只在自然同构意义下成立; 使用覆盖筛时, 加细变成包含关系, 限制变成预复合, 函子性便严格成立.
+
+#remark[
+  一句话概括:
+  $ "加细函子性" = "下降数据可以相容地从粗覆盖限制到细覆盖" $
+]
+
+== 用筛刻画叠
+
+我们可以给出一系列叠用筛的刻画. 上述论证已经给出了下面定理的证明:
+
+#theorem[
+  纤维范畴 $F->C$ 是一个叠, 当且仅当对 $C$ 的任意对象 $u$ 的任意覆盖 $frak(u)$, 诱导函子
+  $ Hom_C (h_u,F) -> Hom_C (h_frak(u),F) $
+  是范畴等价.
+] <thm-stack-via-sieve-1>
+
+这个命题可以进一步加强
+
+#theorem[
+  纤维范畴 $F->C$ 是一个叠, 当且仅当对 $C$ 的任意对象 $u$, 以及属于拓扑 $cal(T)$ 的任意覆盖筛 $S subset h_u$, 由包含诱导的限制函子
+  $ Hom_C (h_u,F) -> Hom_C (S,F) $
+  是范畴等价. 进一步, $F$ 是预叠当且仅当上述函子是全忠实.
+] <thm-stack-via-sieve-2>
+
+为了证明这个结论, 先说明一个关键的局部性引理.
+
+#lemma[
+  设 $F$ 是预叠, $S subset h_u$ 是覆盖筛, 并选择一个覆盖
+  $ frak(u)={u_i->u} $
+  使得 $h_frak(u) subset S$. 则限制函子
+  $ Hom_C (S,F) -> Hom_C (h_frak(u),F) $
+  是全忠实的. 若进一步 $F$ 是叠, 则这个限制函子是范畴等价.
+] <lem-covering-sieve-restriction>
+
+#proof[
+  先证忠实性. 设
+  $ P,Q:S->F $
+  是两个纤维范畴态射, $theta,psi:P=>Q$ 是两个保持基底的自然变换, 并且它们限制到 $h_frak(u)$ 后相同. 对任意对象 $(t->u) in S$, 考虑拉回覆盖
+  $ {t_i:=t times_u u_i -> t} $
+  每个复合 $t_i->t->u$ 都经过 $u_i->u$ 分解, 因而属于 $h_frak(u)$. 所以
+  $ theta_(t_i->u)=psi_(t_i->u) $
+  对所有 $i$ 成立. 由自然性, 这表示 $theta_(t->u)$ 与 $psi_(t->u)$ 拉回到每个 $t_i$ 后相同. 由于 $F$ 是预叠, 两个整体态射只要在一个覆盖上相同就必然相同, 故
+  $ theta_(t->u)=psi_(t->u) $
+  这对每个 $(t->u) in S$ 都成立, 因此 $theta=psi$, 限制函子是忠实的.
+
+  再证充满性. 给定 $P|_(h_frak(u))$ 到 $Q|_(h_frak(u))$ 的保持基底自然变换 $alpha$. 对每个 $(t->u) in S$, 它在上述覆盖 ${t_i->t}$ 上给出一族局部态射
+  $ alpha_(t_i->u):P(t_i->u)->Q(t_i->u) $
+  因为 $alpha$ 是自然变换, 这些局部态射在 $t_i times_t t_j$ 上彼此相容. 预叠的态射下降性质将它们唯一粘合为
+  $ tilde(alpha)_(t->u):P(t->u)->Q(t->u) $
+  若 $t'->t$ 是 $S$ 中的态射, 所需的自然性等式可以拉回到覆盖 ${t' times_u u_i->t'}$ 上检查; 在每一块上它就是 $alpha$ 的自然性, 因而成立. 所以这些 $tilde(alpha)_(t->u)$ 组成 $P=>Q$ 的自然变换. 它的唯一性由刚证明的忠实性得到, 故限制函子是全忠实的.
+
+  最后设 $F$ 是叠, 只需再证本质满. 取
+  $ K:h_frak(u)->F $
+  对每个 $(t->u) in S$, 覆盖 ${t_i->t}$ 上的对象 $K(t_i->u)$ 以及它们在二重交上的典范识别构成一组下降数据. 因为 $F$ 是叠, 这组数据可以粘合为某个对象 $xi_t in F(t)$. 对 $S$ 中的态射 $t'->t$, 相应的局部箭头在覆盖上彼此相容; 由预叠部分已经证明的态射下降, 它们唯一粘合为 $xi_(t')->xi_t$. 恒等态射与复合律都可以在覆盖上检查, 并由粘合的唯一性成立. 同理, Cartesian性也可以在覆盖上检查, 因而这些对象和态射组成一个纤维范畴态射
+  $ tilde(K):S->F $
+  它限制到 $h_frak(u)$ 后与 $K$ 自然同构. 因此限制函子本质满, 从而是范畴等价.
+]
+
+#proof[
+  现在证明 @thm-stack-via-sieve-2. 先设 $F$ 是预叠. 对覆盖筛 $S subset h_u$, 选择覆盖 $frak(u)$ 使得
+  $ h_frak(u) subset S subset h_u $
+  并考虑复合
+  $ Hom_C (h_u,F) -> Hom_C (S,F) -> Hom_C (h_frak(u),F) $
+  由2-Yoneda等价、$Hom_C (h_frak(u),F) tilde.eq F_"desc" (frak(u))$ 以及预叠的定义, 这个复合是全忠实的; 由 @lem-covering-sieve-restriction, 第二个函子也是全忠实的. 于是第一个函子忠实. 若给定它的两个像之间的态射, 先把该态射限制到 $h_frak(u)$, 再利用复合函子的充满性将其唯一提升到 $Hom_C (h_u,F)$ 中; 这个提升在 $Hom_C (S,F)$ 中的像与原态射限制到 $h_frak(u)$ 后相同, 再由第二个函子的忠实性可知二者相同. 所以第一个函子也充满, 因而全忠实.
+
+  若 $F$ 是叠, 上述复合由 @thm-stack-via-sieve-1 是范畴等价, 第二个函子由 @lem-covering-sieve-restriction 也是范畴等价. 根据范畴等价的二取三性质,
+  $ Hom_C (h_u,F) -> Hom_C (S,F) $
+  也是范畴等价.
+
+  反过来, 假设对每个覆盖筛 $S subset h_u$, 上述限制函子都是范畴等价或全忠实. 对任意覆盖 $frak(u)$, 取它所生成的覆盖筛
+  $ S=h_frak(u) $
+  就得到
+  $ Hom_C (h_u,F) -> Hom_C (h_frak(u),F) $
+  分别是范畴等价或全忠实. 范畴等价的情形由 @thm-stack-via-sieve-1 得到 $F$ 是叠; 全忠实的情形结合2-Yoneda等价和 $Hom_C (h_frak(u),F) tilde.eq F_"desc" (frak(u))$, 正好说明下降函子全忠实, 因而 $F$ 是预叠.
+]
+
+#theorem[
+  设 $C$ 是范畴, $cal(T),cal(T)'$ 是 $C$ 上的两个拓扑, $F->C$ 是纤维范畴. 若 $cal(T)'prec cal(T)$, 若 $F$ 相对 $cal(T)$ 是叠/预叠, 那么它相对 $cal(T)'$ 也是叠/预叠.
+]
+
+#theorem[
+  设 $F$ 是 $C$ 上的一个预叠, $frak(u)$ 和 $frak(v)$ 是对象 $u$ 的两个覆盖, 并且 $frak(v)$ 是 $frak(u)$ 的加细. 若
+  $ F(u) -> F(frak(u)) $
+  是范畴等价, 那么
+  $ F(u) -> F(frak(v)) $
+  也是范畴等价.
+]
+
+== 子叠
+
+=== 子叠的定义
+
+#definition(title:[子叠])[
+  设 $C$ 是一个景, $F->C$ 是一个叠. 若 $G subset F$ 是一个纤维子范畴, 并且 $G$ 本身也是叠, 则称 $G$ 是 $F$ 的一个*子叠* (substack).
+]
+
+直观地说, 子叠就是从 $F$ 的所有对象中挑出一类我们感兴趣的对象, 而这类对象必须同时满足两件事: 拉回以后仍属于这一类, 局部属于这一类也能推出整体属于这一类. 前者保证它构成纤维子范畴, 后者保证它仍然满足叠的粘合性质.
+
+#theorem(title:[子叠的常用判别法])[
+  设 $F->C$ 是一个叠, $G$ 是 $F$ 的一个全子范畴. 假设:
+
+  1. $G$ 对拉回封闭: 若 $eta in G$, 且 $xi->eta$ 是 $F$ 中的Cartesian态射, 则 $xi in G$.
+  2. 属于 $G$ 是一个局部性质: 若 ${u_i->u}$ 是覆盖, $xi in F(u)$, 并且 $xi$ 在每个 $u_i$ 上的拉回都属于 $G$, 则 $xi in G$.
+
+  那么 $G$ 是 $F$ 的一个子叠.
+]
+
+#proof[
+  条件1说明 $G$ 是 $F$ 的纤维子范畴. 现在取 $G$ 中的一组下降数据. 忘掉 "$G$ 中" 这个限制, 它当然也是 $F$ 中的下降数据. 因为 $F$ 是叠, 这些局部对象可以在 $F$ 中粘合成某个整体对象 $xi$. $xi$ 在覆盖上的拉回正是原来的局部对象, 而这些局部对象都属于 $G$; 由条件2, $xi$ 本身也属于 $G$.
+
+  至于态射, 因为 $G$ 是全子范畴, $G$ 中两个对象之间的态射与它们在 $F$ 中的态射完全相同. 因而 $F$ 中的态射下降直接给出 $G$ 中的态射下降. 所以 $G$ 是叠.
+]
+
+#example[
+  在fpqc拓扑下, 拟凝聚层构成一个叠. 其中有限秩局部自由层组成的全子范畴是子叠: 局部自由层的拉回仍然局部自由, 而一个拟凝聚层是否有限秩局部自由可以在fpqc覆盖上检查. 换句话说, "向量丛" 不仅能局部描述, 还真的能从相容的局部向量丛粘合出来.
+]
+
+=== 只保留Cartesian态射
+
+给定纤维范畴 $F->C$, 记 $F_"cart"$ 为如下子范畴: 它与 $F$ 有完全相同的对象, 但只保留 $F$ 中的Cartesian态射. 因为同一纤维内的Cartesian态射恰好是同构, 所以 $F_"cart"$ 的每个纤维都是群胚. 因此 $F_"cart"->C$ 是与 $F$ 相伴的纤维于群胚的范畴.
+
+可以把这个操作理解为: 对象一个不删, 只把那些不是拉回同构的普通箭头暂时收起来. 叠论最关心对象如何通过同构粘合, 所以 $F_"cart"$ 正好保留了这部分核心信息.
+
+#theorem[
+  设 $F->C$ 是纤维范畴.
+
+  1. 若 $F$ 是叠, 则 $F_"cart"$ 也是叠.
+  2. 若 $F$ 是预叠, 且 $F_"cart"$ 是叠, 则 $F$ 也是叠.
+]
+
+#proof[
+  首先注意, $F$ 中的同构都是Cartesian态射. 因此对任意覆盖 ${u_i->u}$, $F({u_i->u})$ 与 $F_"cart" ({u_i->u})$ 有相同的下降数据对象: 两者使用相同的局部对象, 而转移态射本来就是同构. 一个下降数据是否有效也没有区别, 因为它只问这些局部对象是否来自某个整体对象.
+
+  先证明第一条. 假设 $F$ 是叠. 给定 $xi,eta in F_"cart" (u)$, 以及一族相容的局部态射
+  $ alpha_i:xi|_(u_i)->eta|_(u_i) $
+  其中每个 $alpha_i$ 都属于 $F_"cart"(u_i)$. 先把它们看成 $F$ 中的态射. 因为 $F$ 是叠, 特别是预叠, 它们唯一粘合成 $F(u)$ 中的态射
+  $ alpha:xi->eta $
+  还需要检查 $alpha$ 仍属于 $F_"cart"$. 每个 $alpha_i$ 位于同一纤维内且是Cartesian的, 因而是同构. 它们的逆态射 $alpha_i^(-1)$ 也彼此相容, 所以同样可以唯一粘合成
+  $ beta:eta->xi $
+  复合 $beta compose alpha$ 和 $alpha compose beta$ 在每个 $u_i$ 上分别是恒等态射. 由预叠的忠实性, 两个复合在整体上也分别是恒等态射. 因此 $alpha$ 是同构, 从而是Cartesian态射. 这证明 $F_"cart"$ 是预叠. 又因为 $F$ 与 $F_"cart"$ 的下降数据对象及有效下降数据相同, $F$ 的对象下降说明 $F_"cart"$ 的每组下降数据也有效, 故 $F_"cart"$ 是叠.
+
+  再证明第二条. 假设 $F$ 是预叠且 $F_"cart"$ 是叠. $F$ 中任意一组下降数据的转移态射都是同构, 所以它同时也是 $F_"cart"$ 中的下降数据. 由于 $F_"cart"$ 是叠, 这组数据可以粘合为整体对象, 因而它作为 $F$ 中的下降数据也是有效的. 所以 $F$ 是预叠, 且它的所有下降数据都有效. 根据叠的等价定义, $F$ 是叠.
+]
+
+#remark[
+  这个命题可以记成: 对象能否粘合, 只需要看 $F_"cart"$ 中的同构信息; 普通非可逆态射能否粘合, 则由 $F$ 的预叠条件负责. 两部分合起来, 就得到完整的叠条件.
+]
+
+= 拟凝聚层的下降
+
+== 模的下降理论
+
+=== 张量积
+
+#remark[下面我们所提到的 "环" 都是交换环, "模" 都是交换环上的模.]
+
+我们来回顾并统一一些关于张量积的概念. 设 $A$ 是一个环, $A$-模构成的范畴记作 $Mod_A$, 考虑一个环同态 $f:A->B$, 若 $M$ 是一个 $A$-模, 用
+$ iota_M : M times.o_A B ->^~ B times.o_A M, quad m times.o b |-> b times.o m $
+表示自然的同构. 记
+$ alpha_M : M -> B times.o_A M, quad m |-> 1 times.o m $
+为自然的同态. 我们规定对于 $r in ZZ_(>=0)$, 
+$ B^(times.o r) := overbrace(B times.o_A ... times.o_A B,r "次") $
+一个 $B$-模 $N$ 可以通过两种方式实现为 $B^(times.o 2)$-模, 即
+$ N times.o_A B quad "和" quad B times.o_A N $
+在这两种情况下, 乘法由公式
+$ (b_1 times.o b_2)(x_1 times.o x_2) = (b_1 x_1) times.o (b_2 x_2) $
+定义. 类似地 $N$ 可以通过三种方式实现为 $B^(times.o 3)$-模, 即
+$ N times.o_A B times.o_A B, quad B times.o_A N times.o_A B, quad B times.o_A B times.o_A N $
+
+=== 模的下降数据
+
+现在给定一个环同态 $f:A->B$, 以及一个 $B^(times.o 2)$-模同态
+$ psi : N times.o_A B -> B times.o_A N $
+
+#remark(title:[为什么是 $B^(times.o 2)$?])[
+  因为 $Spec B^(times.o 2) tilde.eq Spec B times_(Spec A) Spec B$, 几何上就是考虑 $Spec B$ 在 $Spec A$ 上的二重交.
+]
+
+与之对应的有三个 $B^(times.o 3)$-模同态
+$
+psi_1 : B times.o_A N times.o_A B -> B times.o_A B times.o_A N \
+psi_2 : N times.o_A B times.o_A B -> B times.o_A B times.o_A N \
+psi_3 : N times.o_A B times.o_A B -> B times.o_A N times.o_A B
+$
+
+分别通过在第一/二/三个位置插入恒等映射得到. 更明确地说, 
+$ psi_1 = id_B times.o psi, quad psi_3 = psi times.o id_B $
+并且若
+$ psi(x_1 times.o x_2) = sum_i y_i times.o z_i in B times.o_A N $
+则
+$ psi_2(x_1 times.o x_2 times.o x_3) = sum_i y_i times.o x_2 times.o z_i $
+换种写法即
+$ psi_2 = (id_B times.o iota_N) compose (psi times.o id_B) compose (id_N times.o iota_B) $
+现在我们定义一个范畴 $Mod_(A->B)$, 
